@@ -38,7 +38,10 @@ $("#discard-gif").on("click", function (event) {
     event.preventDefault();
 
     //receives value of user input
-    var cartoon = $("#cartoon-input").val();
+    var cartoon = $("#cartoon-input").val().replace(" ", "+");
+    // .toString()
+    console.log(cartoon);
+    //if input has spaces, it has to be concatinated in the url...how do I do this?
 
     // var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=UovqLlb4p7IJUDo4ZG5kvECyu8XreRha"
 

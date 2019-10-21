@@ -14,7 +14,24 @@
 </head>
 
 <body>
-
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid" style="text-align: center">
+            <div class="container">
+                <h1 class="display-4"> Cartoon Giphy Search </h1>
+                <p class="lead"> Enter a cartoon of your choice and receive a list of gifs related to your entry.</p>
+            </div>
+        </div>
+        <div class="buttons-box"></div>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1"> Enter cartoon here: </label>
+                <input class="form-control" id="cartoon-input">
+            </div>
+            <button type="submit" id="save-gif"> Save Search </button>
+            <button type="submit" id="discard-gif"> Discard Search </button>
+        </form>
+        <div class="gif-box"></div>
+    </div>
     <script src="../GifTastic/assets/javascript/logic.js"></script>
 </body>
 

@@ -9,12 +9,13 @@ var cartoons = ["Tom and Jerry", "Spongebob", "Lilo and Stitch", "Kim Possible",
 
 
 //on click function for button that saves gif search:
-$("#save-gif").on("click", function (event) {
+$(".search-button").on("click", function (event) {
     console.log("button works")
     event.preventDefault();
+    console.log(this);
 
     //receives value of user input
-    var cartoon = $("#cartoon-input").val();
+    var cartoon = $("#cartoon-input").val().toString().replace(/ /g, "+");
 
     // var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=UovqLlb4p7IJUDo4ZG5kvECyu8XreRha"
 
@@ -26,35 +27,47 @@ $("#save-gif").on("click", function (event) {
     }).then(function (response) {
         console.log(response.data[0].rating);
         console.log(queryURL);
+        for (g = 0; g < response.data.length; g++) {
+            console.log(g);
+            $("#gif-box").text(response.data[g].images.original_still);
+            //which data component am I supposed to retrieve and how do I show it?
+        }
     });
+
+    // if (this.attr(id) === "save-gif") {
+    //     //append button of user input with gif data
+    // }
+    // else if (this.attr(id) === "discard-gif") {
+    //     //empty out gif display box 
+    // }
 
 })
 
 
 
 //on click function for button that does not save gif search:
-$("#discard-gif").on("click", function (event) {
-    console.log("button works")
-    event.preventDefault();
+// $("#discard-gif").on("click", function (event) {
+//     console.log("button works")
+//     event.preventDefault();
 
-    //receives value of user input
-    var cartoon = $("#cartoon-input").val().replace(" ", "+");
-    // .toString()
-    console.log(cartoon);
-    //if input has spaces, it has to be concatinated in the url...how do I do this?
+//     //receives value of user input
+//     var cartoon = $("#cartoon-input").val().toString().replace(/ /g, "+");
+//     console.log(cartoon);
+//     //if input has spaces, it has to be concatinated in the url...how do I do this?
 
-    // var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=UovqLlb4p7IJUDo4ZG5kvECyu8XreRha"
+//     // var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=UovqLlb4p7IJUDo4ZG5kvECyu8XreRha"
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + cartoon + "&api_key=UovqLlb4p7IJUDo4ZG5kvECyu8XreRha&limit=10";
+//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + cartoon + "&api_key=UovqLlb4p7IJUDo4ZG5kvECyu8XreRha&limit=10";
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function (response) {
+//         console.log(response.data[0].rating);
+//         console.log(queryURL);
+//     });
 
-    });
-
-})
+// })
 
 //create function that loops through array of cartoons and dynamically creates buttons
 function createButtons() {
@@ -82,3 +95,5 @@ function createButtons() {
     }
 }
 createButtons();
+
+//on click 

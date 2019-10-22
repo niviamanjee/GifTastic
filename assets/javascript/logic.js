@@ -29,7 +29,12 @@ $(".search-button").on("click", function (event) {
         console.log(queryURL);
         for (g = 0; g < response.data.length; g++) {
             console.log(g);
-            $("#gif-box").text(response.data[g].images.original_still);
+            var image = $("<img>");
+            image.attr("src", response.data[g].images.original_still.url);
+            $(".gif-box").append(image);
+            console.log(response.data[g].images.original_still.url);
+            // attr("src", response.data[g].images.original_still.url);
+            //dynamically create img tag that holds the image inside the div
             //which data component am I supposed to retrieve and how do I show it?
         }
     });
@@ -42,6 +47,8 @@ $(".search-button").on("click", function (event) {
     // }
 
 })
+//on click function that plays the animated gif when clicked and stops the animation when clicked again
+//where would I call this function? would it be after the for loop in the ajax call??
 
 
 

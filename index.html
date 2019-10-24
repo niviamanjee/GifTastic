@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../GifTastic/assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="../GifTastic/assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -24,10 +25,11 @@
         <div class="buttons-box"></div>
         <form>
             <div class="form-group">
-                <label for="exampleInputEmail1"> Enter cartoon here: </label>
+                <label for="exampleInputEmail1" id="submitBoxLabel"> Enter Cartoon Here: </label>
                 <input class="form-control" id="cartoon-input">
+                <button type="submit" id="save-gif" class="search-button"> Save Search </button>
             </div>
-            <button type="submit" id="save-gif" class="search-button"> Save Search </button>
+
             <!-- <button type="submit" id="discard-gif" class="search-button"> Discard Search </button> -->
         </form>
         <div class="gif-box"></div>

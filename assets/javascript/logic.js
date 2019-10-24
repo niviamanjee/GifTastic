@@ -102,13 +102,15 @@ $(document).on("click", ".cartoon-btn", function () {
 
         for (g = 0; g < response.data.length; g++) {
             console.log(g);
+            var gifDiv = $("<div>");
             var image = $("<img>");
             image.addClass("images");
             image.attr("src", response.data[g].images.original_still.url);
             image.attr("src-alt", response.data[g].images.downsized_medium.url)
             var rating = $("<p>");
             rating.text("Rating: " + response.data[g].rating)
-            $(".gif-box").append(image, rating);
+            gifDiv.append(image, rating);
+            $(".gif-box").append(gifDiv)
             console.log(response.data[g].images.original_still.url);
             // attr("src", response.data[g].images.original_still.url);
             //dynamically create img tag that holds the image inside the div

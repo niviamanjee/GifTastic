@@ -4,3 +4,47 @@
     height: 150px;
     
 }
+.gif-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 80vw;
+}
+.buttons-box {
+    display: flex;
+    justify-content: space-between;
+}
+.cartoon-btn {
+    width: 8vw;
+    font-size: 75%;
+}
+.form-group {
+    color: white;
+    font-weight: bolder;
+    font-family:'Press Start 2P', cursive;
+    text-align: center;
+    margin-top: 5vh;
+    border: 3px solid purple;
+    padding: 9%;
+    background-image: url("https://media.giphy.com/media/2Eq9hBMQz8bss/giphy.gif"); ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#cartoon-input {
+    margin-top: 3%;
+}
+#submitBoxLabel {
+    background-color: black;
+    padding: 3%;
+    border: 2px solid white;
+}
+#save-gif {
+    margin-top: 5%;
+    font-size: 80%;
+    padding: 2%;
+    color: white;
+    background-color: black;
+}

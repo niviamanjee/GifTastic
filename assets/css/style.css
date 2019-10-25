@@ -1,3 +1,30 @@
+body {
+    background-color: lightblue;
+}
+
+.heading-box {
+    color: white;
+    padding: 3%;
+    font-family: 'Press Start 2P', cursive;
+    background-image: url("https://media.giphy.com/media/2Eq9hBMQz8bss/giphy.gif"); ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border: 3px solid purple;
+    margin-top: 5%;
+}
+.site-title {
+    color: yellow;
+}
+.instructions {
+    background-color: #ffffff80;
+    padding: 3%;
+    font-size: 80%;
+    color: black;
+    border: 1px dashed purple;
+    font-weight: lighter;
+}
 
 .images {
     width: 150px;
@@ -7,6 +34,7 @@
 .gif-box {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     width: 80vw;
 }
@@ -24,27 +52,37 @@
     font-family:'Press Start 2P', cursive;
     text-align: center;
     margin-top: 5vh;
-    border: 3px solid purple;
-    padding: 9%;
-    background-image: url("https://media.giphy.com/media/2Eq9hBMQz8bss/giphy.gif"); ;
+    
+    padding: 0%;
+    /* background-image: url("https://media.giphy.com/media/2Eq9hBMQz8bss/giphy.gif"); ;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover; */
 }
 
 #cartoon-input {
     margin-top: 3%;
+    height: 3vh;
 }
 #submitBoxLabel {
     background-color: black;
-    padding: 3%;
-    border: 2px solid white;
+    padding: 2%;
+    border: 2px solid blue;
 }
 #save-gif {
-    margin-top: 5%;
-    font-size: 80%;
-    padding: 2%;
+    margin-top: 3%;
+    font-size: 67%;
+    padding: 1%;
     color: white;
+    border: 2px solid blue;
+    background-color: black;
+}
+#clear-button {
+    margin-top: 3%;
+    font-size: 67%;
+    padding: 1%;
+    color: white;
+    border: 2px solid blue;
     background-color: black;
 }

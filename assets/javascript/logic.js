@@ -39,6 +39,13 @@ function createButtons() {
         a.text(cartoons[i]);
         // Adding the button to the buttons-box div
         $(".buttons-box").append(a);
+        // var cartoonRemove = $("<button>");
+
+        // cartoonRemove.attr("data-to-do", i);
+        // cartoonRemove.addClass("remove-box");
+        // cartoonRemove.text("x");
+
+        // a = a.prepend(cartoonRemove);
     }
 
 }
@@ -57,20 +64,39 @@ $("#save-gif").on("click", function (event) {
         console.log(cartoon);
 
         //receives value of user input
+        var buttonDiv = $("<div>");
+        buttonDiv.addClass("cartoon-btnBox")
 
         var b = $("<button>");
+        // var toonRemove = $("<button>");
+
+        // toonRemove.attr("data-to-do", i);
+        // toonRemove.addClass("remove-box");
+        // toonRemove.text("x");
+
+        // Append the button to the to do item
+
         // Adding a class of movie-btn to our button
         b.addClass("cartoon-btn");
         // Adding a data-attribute
         b.attr("data-name", cartoon);
         // Providing the initial button text
         b.text(cartoon);
+        // buttonDiv = buttonDiv.prepend(toonRemove);
         // Adding the button to the buttons-box div
         cartoons.push(cartoon.toString());
         cartoonsFormatted.push(cartoonLowerCase.toString());
         localStorage.setItem("cartoons", JSON.stringify(cartoons))
         // pusht to the cartoons formatted with cartoon formatted too
+        $(".cartoon-btnBox").append(toonRemove, b);
         $(".buttons-box").append(b);
+
+        for (var i = 0; i < cartoons.length; i++) {
+
+            // del = del.prepend(b);
+            $(cartoons[i]).append(del);
+        }
+
 
         console.log(cartoons);
         $("#cartoon-input").val("");
@@ -78,6 +104,9 @@ $("#save-gif").on("click", function (event) {
     else {
         alert("This cartoon has already been saved.");
     }
+    // else if(cartoons[].attr("data-name")=== ""){
+
+    // }
     // appendUserButton();
     // if (!cartoon.inIndexOf(cartoons)) {
     //     appendUserButton();
@@ -131,38 +160,21 @@ $(document).on("click", ".cartoon-btn", function () {
 
 })
 
+// create on click function that removes the button clicked 
+// $(document).on("click", ".remove-box", function () {
+//     alert("remove button clicked!");
+//     localStorage.removeItem(this);
+// })
+//localStorage.removeItem()
 
+$("#clear-button").on("click", function (event) {
+    event.preventDefault();
+    $(".gif-box").empty();
+})
     //data-still, data-animate, data-state
     //.setAttribute
 
-    // if (this.attr(id) === "save-gif") {
-    //     //      //dynamically create a button, append that button to the cartoons array
-    //     var b = $("<button>");
-    //     // Adding a class of movie-btn to our button
-    //     b.addClass("cartoon-btn");
-    //     // Adding a data-attribute
-    //     b.attr("data-name", cartoons);
-    //     // Providing the initial button text
-    //     b.text(cartoons);
-    //     // Adding the button to the buttons-box div
-    //     $(".buttons-box").append(b);
-    //     //append button of user input with gif data
-    // }
 
-
-//     ,)
-// });
-
-//g
-
-//
-
-// function switchMotion() {
-
-//     
-// }
-//on click function that plays the animated gif when clicked and stops the animation when clicked again
-//where would I call this function? would it be after the for loop in the ajax call??
 
 
 // localstorage based on key and value ( values is always a string)

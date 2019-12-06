@@ -95,3 +95,40 @@ $(document).on("click", ".cartoonBtn", function () {
 
     searchCartoon($(this).text().toString());
 })
+
+//creating the modal for sign in 
+$(document).ready(function () {
+
+
+    $("#signup-button").on("click", function (event) {
+        event.preventDefault();
+        console.log("sign up button works")
+        $('.modal').modal('show');
+    });
+});
+
+//USER AUTHORIZATION 
+$("#appendUser").on("click", function (event) {
+    event.preventDefault();
+
+    const email = $("#inputEmail").val();
+    const password = $("#inputPassword").val();
+    console.log(email, password)
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(cred => {
+        return db.collection('users').doc(cred.user.uid).set({
+            email: email,
+            password: password
+        });
+
+    }).then(() => {
+        $('.modal').modal('hide');
+        $("#signUpForm").reset();
+    })
+})
+
+//LOGOUT
+$("#logout-button").on("click", function (event) {
+    event.preventDefault();
+    firebase.auth().signOut();
+})

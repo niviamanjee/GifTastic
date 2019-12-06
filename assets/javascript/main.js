@@ -97,34 +97,68 @@ $(document).on("click", ".cartoonBtn", function () {
 })
 
 //creating the modal for sign in 
-$(document).ready(function () {
+// $(document).ready(function () {
 
 
-    $("#signup-button").on("click", function (event) {
-        event.preventDefault();
-        console.log("sign up button works")
-        $('.modal').modal('show');
-    });
-});
+//     $("#signup-button").on("click", function (event) {
+//         event.preventDefault();
+//         console.log("sign up button works")
+//         $('.modal').modal('show');
+//     });
+// });
 
 //USER AUTHORIZATION 
-$("#appendUser").on("click", function (event) {
+$("#signup-button").on("click", function (event) {
     event.preventDefault();
+    // firebase.initializeApp(firebaseConfig);
+    // var provider = new firebase.auth.GoogleAuthProvider();
+    // firebase.auth().signInWithPopup(provider)
+    //     .then(function (user) {
+    //         // localStorage.setItem('user',JSON.stringify(user));
+    //         window.location.href = '/dashboard';
+    //         console.log(user)
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error)
+    //         var errorCode = error.code;
+    //         var errorMessage = error.message;
+    //         var email = error.email;
+    //         var credential = error.credential
+    //     })
 
-    const email = $("#inputEmail").val();
-    const password = $("#inputPassword").val();
-    console.log(email, password)
+    // const email = $("#inputEmail").val();
+    // const password = $("#inputPassword").val();
+    // console.log(email, password)
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(cred => {
-        return db.collection('users').doc(cred.user.uid).set({
-            email: email,
-            password: password
-        });
+    // firebase.auth().createUserWithEmailAndPassword(email, password).then(cred => {
+    //     return db.collection('users').doc(cred.user.uid).set({
+    //         email: email,
+    //         password: password
+    //     });
 
-    }).then(() => {
-        $('.modal').modal('hide');
-        $("#signUpForm").reset();
-    })
+    // }).then(() => {
+    //     $('.modal').modal('hide');
+    //     $("#signUpForm").reset();
+    // })
+    firebase.auth().signInWithPopup(provider).then(function (result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log(user)
+        console.log(token)
+        // ...
+    }).catch(function (error) {
+        console.log("error: ", error)
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+    });
 })
 
 //LOGOUT

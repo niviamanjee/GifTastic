@@ -110,45 +110,33 @@ $(document).on("click", ".cartoonBtn", function () {
 //USER AUTHORIZATION 
 $("#signup-button").on("click", function (event) {
     event.preventDefault();
-    // firebase.initializeApp(firebaseConfig);
-    // var provider = new firebase.auth.GoogleAuthProvider();
-    // firebase.auth().signInWithPopup(provider)
-    //     .then(function (user) {
-    //         // localStorage.setItem('user',JSON.stringify(user));
-    //         window.location.href = '/dashboard';
-    //         console.log(user)
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error)
-    //         var errorCode = error.code;
-    //         var errorMessage = error.message;
-    //         var email = error.email;
-    //         var credential = error.credential
-    //     })
 
-    // const email = $("#inputEmail").val();
-    // const password = $("#inputPassword").val();
-    // console.log(email, password)
-
-    // firebase.auth().createUserWithEmailAndPassword(email, password).then(cred => {
-    //     return db.collection('users').doc(cred.user.uid).set({
-    //         email: email,
-    //         password: password
-    //     });
-
-    // }).then(() => {
-    //     $('.modal').modal('hide');
-    //     $("#signUpForm").reset();
-    // })
     firebase.auth().signInWithPopup(provider).then(function (result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        console.log(result)
+        console.log(result)   /// name, email, user (user use as unique key)
+        // create the user on you db
+        // then you can use this user to add the object of the topics 
         console.log(user)
         console.log(token)
         // ...
+
+        //create a doc for that user in db 
+        // Add a new document in collection "cities"
+        db.collection("user").doc(user.displayName).set({
+            name: user.displayName,
+            email: user.email,
+            userId: user.uid,
+            savedButtons: []
+        })
+            .then(function () {
+                console.log("Document successfully written!");
+            })
+            .catch(function (error) {
+                console.error("Error writing document: ", error);
+            });
     }).catch(function (error) {
         console.log("error: ", error)
         // Handle Errors here.
@@ -165,5 +153,5 @@ $("#signup-button").on("click", function (event) {
 //LOGOUT
 $("#logout-button").on("click", function (event) {
     event.preventDefault();
-    firebase.auth().signOut();
+    firebase.auth().signOut(provider);
 })

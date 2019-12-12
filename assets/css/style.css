@@ -26,15 +26,29 @@ body {
     font-weight: lighter;
 }
 
-.images {
-    width: 150px;
+img {
+    width: 140px;
     height: 150px;
+    align-content: center;
     
+}
+
+.card {
+    margin-bottom: 3%;
+    padding: 2%;
+    background-color: darkcyan;
+    
+}
+
+.card p {
+    font-family: fantasy;
+    margin-top: 5%;
+    color: white;
 }
 .gif-box {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-wrap: wrap;
     width: 80vw;
 }
@@ -70,15 +84,8 @@ body {
     padding: 2%;
     border: 2px solid blue;
 }
-#save-gif {
-    margin-top: 3%;
-    font-size: 67%;
-    padding: 1%;
-    color: white;
-    border: 2px solid blue;
-    background-color: black;
-}
-#clear-button {
+
+#clear-button, #save-button, #search-button {
     margin-top: 3%;
     font-size: 67%;
     padding: 1%;

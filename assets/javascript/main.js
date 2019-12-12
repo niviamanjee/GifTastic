@@ -107,51 +107,52 @@ $(document).on("click", ".cartoonBtn", function () {
 //     });
 // });
 
-//USER AUTHORIZATION 
-$("#signup-button").on("click", function (event) {
-    event.preventDefault();
+//USER AUTHORIZATION AND DATABASE
+//sign in
+// $("#signup-button").on("click", function (event) {
+//     event.preventDefault();
 
-    firebase.auth().signInWithPopup(provider).then(function (result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        console.log(result)   /// name, email, user (user use as unique key)
-        // create the user on you db
-        // then you can use this user to add the object of the topics 
-        console.log(user)
-        console.log(token)
-        // ...
+//     firebase.auth().signInWithPopup(provider).then(function (result) {
+//         // This gives you a Google Access Token. You can use it to access the Google API.
+//         var token = result.credential.accessToken;
+//         // The signed-in user info.
+//         var user = result.user;
+//         console.log(result)   /// name, email, user (user use as unique key)
+//         // create the user on you db
+//         // then you can use this user to add the object of the topics 
+//         console.log(user)
+//         console.log(token)
+//         // ...
 
-        //create a doc for that user in db 
-        // Add a new document in collection "cities"
-        db.collection("user").doc(user.displayName).set({
-            name: user.displayName,
-            email: user.email,
-            userId: user.uid,
-            savedButtons: []
-        })
-            .then(function () {
-                console.log("Document successfully written!");
-            })
-            .catch(function (error) {
-                console.error("Error writing document: ", error);
-            });
-    }).catch(function (error) {
-        console.log("error: ", error)
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-    });
-})
 
-//LOGOUT
-$("#logout-button").on("click", function (event) {
-    event.preventDefault();
-    firebase.auth().signOut(provider);
-})
+//         //user doc and information is created in database
+//         db.collection("user").doc(user.displayName).set({
+//             name: user.displayName,
+//             email: user.email,
+//             userId: user.uid,
+//             savedButtons: []
+//         })
+//             .then(function () {
+//                 console.log("Document successfully written!");
+//             })
+//             .catch(function (error) {
+//                 console.error("Error writing document: ", error);
+//             });
+//     }).catch(function (error) {
+//         console.log("error: ", error)
+//         // Handle Errors here.
+//         var errorCode = error.code;
+//         var errorMessage = error.message;
+//         // The email of the user's account used.
+//         var email = error.email;
+//         // The firebase.auth.AuthCredential type that was used.
+//         var credential = error.credential;
+//         // ...
+//     });
+// })
+
+// //LOGOUT
+// $("#logout-button").on("click", function (event) {
+//     event.preventDefault();
+//     firebase.auth().signOut(provider);
+// })
